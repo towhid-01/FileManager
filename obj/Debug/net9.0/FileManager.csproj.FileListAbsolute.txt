@@ -1,0 +1,15 @@
+H:\C# Projects\FileManager\bin\Debug\net9.0\FileManager.exe
+H:\C# Projects\FileManager\bin\Debug\net9.0\FileManager.deps.json
+H:\C# Projects\FileManager\bin\Debug\net9.0\FileManager.runtimeconfig.json
+H:\C# Projects\FileManager\bin\Debug\net9.0\FileManager.dll
+H:\C# Projects\FileManager\bin\Debug\net9.0\FileManager.pdb
+H:\C# Projects\FileManager\obj\Debug\net9.0\FileManager.GeneratedMSBuildEditorConfig.editorconfig
+H:\C# Projects\FileManager\obj\Debug\net9.0\FileManager.AssemblyInfoInputs.cache
+H:\C# Projects\FileManager\obj\Debug\net9.0\FileManager.AssemblyInfo.cs
+H:\C# Projects\FileManager\obj\Debug\net9.0\FileManager.csproj.CoreCompileInputs.cache
+H:\C# Projects\FileManager\obj\Debug\net9.0\FileManager.sourcelink.json
+H:\C# Projects\FileManager\obj\Debug\net9.0\FileManager.dll
+H:\C# Projects\FileManager\obj\Debug\net9.0\refint\FileManager.dll
+H:\C# Projects\FileManager\obj\Debug\net9.0\FileManager.pdb
+H:\C# Projects\FileManager\obj\Debug\net9.0\FileManager.genruntimeconfig.cache
+H:\C# Projects\FileManager\obj\Debug\net9.0\ref\FileManager.dll
