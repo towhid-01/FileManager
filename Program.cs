@@ -75,7 +75,7 @@
                 return;
             }
 
-            string fullPath = Path.Combine(path, fileName); // Correctly combine directory and file name
+            string fullPath = Path.Combine(path, fileName); 
 
             if (File.Exists(fullPath))
             {
@@ -85,12 +85,43 @@
 
             try
             {
-                using (File.Create(fullPath)) { } // Ensures file is created and closed immediately
+                using (File.Create(fullPath)) { } 
                 Console.WriteLine($"Success: File '{fileName}' created at {path}!");
             }
             catch (UnauthorizedAccessException)
             {
                 Console.WriteLine("Error: No permission to create a file here!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+        else if (options == "2")
+        {
+            Console.WriteLine("Enter the folder name");
+            string folderName = Console.ReadLine();
+
+            if (string.IsNullOrWhiteSpace(folderName))
+            {
+                Console.WriteLine("Error: No folder name entered!");
+            }
+            string fullPath = Path.Combine(path, folderName);
+
+            if (Directory.Exists(fullPath))
+            {
+                Console.WriteLine($"Error: File '{folderName}' already exists in {path}!");
+                return;
+            }
+
+            try
+            {
+                Directory.CreateDirectory(fullPath);
+                Console.WriteLine($"Success: File '{folderName}' created at {path}!");
+            }
+            catch (UnauthorizedAccessException)
+            {
+                Console.WriteLine("Error: No permission to create a folder here!");
             }
             catch (Exception ex)
             {
