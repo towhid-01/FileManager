@@ -6,6 +6,7 @@ class Program
     {
         FileManager fileManager = new FileManager();
         FileandFolderDeleter fileandFolderDeleter = new FileandFolderDeleter();
+        FilesAndFoldersList listFilesAndFolders = new FilesAndFoldersList();
 
         while (true)
         {
@@ -14,12 +15,13 @@ class Program
             Console.WriteLine("2 - Create a Folder");
             Console.WriteLine("3 - Delete a File");
             Console.WriteLine("4 - Delete a Folder");
-            Console.WriteLine("5 - Exit");
+            Console.WriteLine("5 - List all files");
+            Console.WriteLine("6 - Exit");
             Console.Write("Enter your choice: ");
             
             string choice = Console.ReadLine();
 
-            if (choice == "5")
+            if (choice == "6")
             {
                 Console.WriteLine("Exiting program...");
                 break;
@@ -49,6 +51,10 @@ class Program
             else if (choice == "4")
             {
                 fileandFolderDeleter.DeleteDirectory(path);
+            }
+            else if (choice == "5")
+            {
+                listFilesAndFolders.ListFilesAndFolders(path);
             }
             else
             {
