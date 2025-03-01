@@ -1,131 +1,58 @@
-﻿while (true)
+﻿using System;
+using FileManagerApp;
+class Program
 {
-    Console.WriteLine("Type 'list' to show files/folders");
-    Console.WriteLine("Type 'exit' to exit");
-    Console.WriteLine("Type 'create' to show help");
-    Console.Write("Enter Your Choice: ");
-    string userInput = Console.ReadLine().ToLower();
-
-    if (userInput == "exit")
+    static void Main()
     {
-        break;
-    }
+        FileManager fileManager = new FileManager();
+        FileandFolderDeleter fileandFolderDeleter = new FileandFolderDeleter();
 
-    if (userInput == "list")
-    {
-        Console.Write("Enter the directory path: ");
-        string path = Console.ReadLine();
-
-        if (!Directory.Exists(path))
+        while (true)
         {
-            Console.WriteLine("Error: Directory does not exist!");
-            continue;
-        }
+            Console.WriteLine("\nOptions:");
+            Console.WriteLine("1 - Create a File");
+            Console.WriteLine("2 - Create a Folder");
+            Console.WriteLine("3 - Delete a File");
+            Console.WriteLine("4 - Delete a Folder");
+            Console.WriteLine("5 - Exit");
+            Console.Write("Enter your choice: ");
+            
+            string choice = Console.ReadLine();
 
-        Console.WriteLine("Choose an option:");
-        Console.WriteLine("1 - Show Files");
-        Console.WriteLine("2 - Show Folders");
-        Console.Write("Your choice: ");
-        string options = Console.ReadLine();
-
-        string[] fileList = Array.Empty<string>();
-
-        if (options == "1")
-            fileList = Directory.GetFiles(path);
-        else if (options == "2")
-            fileList = Directory.GetDirectories(path);
-        else
-        {
-            Console.WriteLine("Invalid option! Please enter 1 or 2.");
-            continue;
-        }
-
-        if (fileList.Length == 0)
-        {
-            Console.WriteLine("No files or folders found.");
-        }
-        else
-        {
-            Console.WriteLine("\nListing contents:");
-            foreach (var file in fileList)
+            if (choice == "5")
             {
-                Console.WriteLine(file);
-            }
-        }
-    }
-    else if (userInput == "create")
-    {
-        Console.Write("Enter the directory path: ");
-        string path = Console.ReadLine();
-    
-        Console.WriteLine("Choose an option:");
-        Console.WriteLine("1 - Create a new file");
-        Console.WriteLine("2 - Create a new folder");
-        Console.Write("Your choice: ");
-        string options = Console.ReadLine();
-
-        if (options == "1")
-        {
-            Console.Write("Enter the file name (including extension, e.g., file.txt): ");
-            string fileName = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(fileName))
-            {
-                Console.WriteLine("Error: No file name entered!");
-                return;
+                Console.WriteLine("Exiting program...");
+                break;
             }
 
-            string fullPath = Path.Combine(path, fileName); 
+            Console.Write("Enter the path: ");
+            string path = Console.ReadLine();
 
-            if (File.Exists(fullPath))
+            if (string.IsNullOrWhiteSpace(path))
             {
-                Console.WriteLine($"Error: File '{fileName}' already exists in {path}!");
-                return;
-            }
-
-            try
-            {
-                using (File.Create(fullPath)) { } 
-                Console.WriteLine($"Success: File '{fileName}' created at {path}!");
-            }
-            catch (UnauthorizedAccessException)
-            {
-                Console.WriteLine("Error: No permission to create a file here!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-        }
-        else if (options == "2")
-        {
-            Console.WriteLine("Enter the folder name");
-            string folderName = Console.ReadLine();
-
-            if (string.IsNullOrWhiteSpace(folderName))
-            {
-                Console.WriteLine("Error: No folder name entered!");
-            }
-            string fullPath = Path.Combine(path, folderName);
-
-            if (Directory.Exists(fullPath))
-            {
-                Console.WriteLine($"Error: File '{folderName}' already exists in {path}!");
-                return;
+                Console.WriteLine("Error: No path entered!");
+                continue;
             }
 
-            try
+            if (choice == "1")
             {
-                Directory.CreateDirectory(fullPath);
-                Console.WriteLine($"Success: File '{folderName}' created at {path}!");
+                fileManager.CreateFile(path); 
             }
-            catch (UnauthorizedAccessException)
+            else if (choice == "2")
             {
-                Console.WriteLine("Error: No permission to create a folder here!");
+                fileManager.CreateDirectory(path); 
             }
-            catch (Exception ex)
+            else if (choice == "3")
             {
-                Console.WriteLine($"Error: {ex.Message}");
+                fileandFolderDeleter.DeleteFile(path);
+            }
+            else if (choice == "4")
+            {
+                fileandFolderDeleter.DeleteDirectory(path);
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice! Please enter 1, 2, 3, 4 or 5.");
             }
         }
     }
