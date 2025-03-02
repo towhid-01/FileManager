@@ -48,6 +48,7 @@
                 Console.WriteLine("Error: File does not exist.");
                 return;
             }
+            
 
             FileInfo fileInfo = new FileInfo(path);
 
@@ -57,6 +58,6 @@
             Console.WriteLine($"Created On: {fileInfo.CreationTime}");
             Console.WriteLine($"Last Modified: {fileInfo.LastWriteTime}");
         }
-
+        
     }
 }

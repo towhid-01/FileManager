@@ -8,6 +8,7 @@ class Program
         FileandFolderDeleter fileandFolderDeleter = new FileandFolderDeleter();
         FilesAndFoldersList listFilesAndFolders = new FilesAndFoldersList();
         FileOperations fileOperations = new FileOperations();
+        FileOrFolderSearch fileOrFolderSearch = new FileOrFolderSearch();
 
         while (true)
         {
@@ -19,12 +20,13 @@ class Program
             Console.WriteLine("5 - List all Files and Folders");
             Console.WriteLine("6 - Rename File or Folder");
             Console.WriteLine("7 - View File Details");
-            Console.WriteLine("8 - Exit");
+            Console.WriteLine("8 - Search Files or Folders");
+            Console.WriteLine("9 - Exit");
             Console.Write("Enter your choice: ");
             
             string choice = Console.ReadLine();
 
-            if (choice == "8")
+            if (choice == "9")
             {
                 Console.WriteLine("Exiting program...");
                 break;
@@ -66,6 +68,12 @@ class Program
             else if (choice == "7")
             {
                 fileOperations.ViewFileDetails(path);
+            }
+            else if (choice == "8")
+            {
+                Console.Write("Enter keyword to search: ");
+                string keyword = Console.ReadLine();
+                fileOrFolderSearch.Search(path, keyword);
             }
             else
             {
