@@ -69,7 +69,6 @@
 
             DirectoryInfo dirInfo = new DirectoryInfo(path);
 
-            // Calculate folder size
             long size = GetDirectorySize(path);
 
             Console.WriteLine("\nFolder Details:");
@@ -79,12 +78,10 @@
             Console.WriteLine($"Size: {FormatSize(size)}");
         }
 
-        // Get the size of the folder recursively
         private long GetDirectorySize(string path)
         {
             long size = 0;
 
-            // Get all files in the directory
             string[] files = Directory.GetFiles(path);
             foreach (string file in files)
             {
@@ -92,7 +89,6 @@
                 size += fileInfo.Length;
             }
 
-            // Recursively get the size of subdirectories
             string[] directories = Directory.GetDirectories(path);
             foreach (string directory in directories)
             {
@@ -102,7 +98,6 @@
             return size;
         }
 
-        // Format the size to GB or MB
         private string FormatSize(long sizeInBytes)
         {
             double sizeInMB = sizeInBytes / 1024.0 / 1024.0;
