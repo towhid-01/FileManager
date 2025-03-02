@@ -56,7 +56,7 @@
 
         try
         {
-            Directory.Delete(fullPath);
+            Directory.Delete(fullPath,true);
             Console.WriteLine($"Success: Directory '{directoryName}' deleted from {path}!");
         }
         catch (UnauthorizedAccessException)
