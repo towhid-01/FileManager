@@ -13,31 +13,6 @@ A simple File Manager application that allows users to perform basic file and fo
 - **View File or Folder Details**: View detailed information about a file or folder, including name, size, creation time, and last modification time. For folders, the size is displayed recursively.
 - **Search Files or Folders**: Search for files or folders by name within the specified directory.
 
-## Requirements
-
-- .NET Core SDK (or later version)
-- C# compiler
-
-## Installation
-
-1. Clone the repository to your local machine:
-
-    ```bash
-    git clone https://github.com/yourusername/FileManagerApp.git
-    ```
-
-2. Navigate to the project directory:
-
-    ```bash
-    cd FileManagerApp
-    ```
-
-3. Compile and run the project:
-
-    ```bash
-    dotnet run
-    ```
-
 ## Usage
 
 When you run the application, you will be presented with a menu with options:
