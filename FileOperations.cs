@@ -41,5 +41,22 @@
             }
         }
         
+        public void ViewFileDetails(string path)
+        {
+            if (!File.Exists(path))
+            {
+                Console.WriteLine("Error: File does not exist.");
+                return;
+            }
+
+            FileInfo fileInfo = new FileInfo(path);
+
+            Console.WriteLine("\nFile Details:");
+            Console.WriteLine($"Name: {fileInfo.Name}");
+            Console.WriteLine($"Size: {fileInfo.Length} bytes");
+            Console.WriteLine($"Created On: {fileInfo.CreationTime}");
+            Console.WriteLine($"Last Modified: {fileInfo.LastWriteTime}");
+        }
+
     }
 }

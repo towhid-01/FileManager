@@ -18,12 +18,13 @@ class Program
             Console.WriteLine("4 - Delete a Folder");
             Console.WriteLine("5 - List all Files and Folders");
             Console.WriteLine("6 - Rename File or Folder");
-            Console.WriteLine("7 - Exit");
+            Console.WriteLine("7 - View File Details");
+            Console.WriteLine("8 - Exit");
             Console.Write("Enter your choice: ");
             
             string choice = Console.ReadLine();
 
-            if (choice == "7")
+            if (choice == "8")
             {
                 Console.WriteLine("Exiting program...");
                 break;
@@ -61,6 +62,10 @@ class Program
             else if (choice == "6")
             {
                 fileOperations.Rename(path);
+            }
+            else if (choice == "7")
+            {
+                fileOperations.ViewFileDetails(path);
             }
             else
             {
