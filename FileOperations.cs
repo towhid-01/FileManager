@@ -57,7 +57,67 @@
             Console.WriteLine($"Size: {fileInfo.Length} bytes");
             Console.WriteLine($"Created On: {fileInfo.CreationTime}");
             Console.WriteLine($"Last Modified: {fileInfo.LastWriteTime}");
+        }        
+        
+        public void ViewFolderDetails(string path)
+        {
+            if (!Directory.Exists(path))
+            {
+                Console.WriteLine("Error: Folder does not exist.");
+                return;
+            }
+
+            DirectoryInfo dirInfo = new DirectoryInfo(path);
+
+            // Calculate folder size
+            long size = GetDirectorySize(path);
+
+            Console.WriteLine("\nFolder Details:");
+            Console.WriteLine($"Name: {dirInfo.Name}");
+            Console.WriteLine($"Created On: {dirInfo.CreationTime}");
+            Console.WriteLine($"Last Modified: {dirInfo.LastWriteTime}");
+            Console.WriteLine($"Size: {FormatSize(size)}");
         }
+
+        // Get the size of the folder recursively
+        private long GetDirectorySize(string path)
+        {
+            long size = 0;
+
+            // Get all files in the directory
+            string[] files = Directory.GetFiles(path);
+            foreach (string file in files)
+            {
+                FileInfo fileInfo = new FileInfo(file);
+                size += fileInfo.Length;
+            }
+
+            // Recursively get the size of subdirectories
+            string[] directories = Directory.GetDirectories(path);
+            foreach (string directory in directories)
+            {
+                size += GetDirectorySize(directory);
+            }
+
+            return size;
+        }
+
+        // Format the size to GB or MB
+        private string FormatSize(long sizeInBytes)
+        {
+            double sizeInMB = sizeInBytes / 1024.0 / 1024.0;
+            if (sizeInMB >= 1024)
+            {
+                double sizeInGB = sizeInMB / 1024.0;
+                return $"{sizeInGB:F2} GB";
+            }
+            else
+            {
+                return $"{sizeInMB:F2} MB";
+            }
+        }
+        
+
         
     }
 }

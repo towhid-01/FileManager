@@ -67,7 +67,16 @@ class Program
             }
             else if (choice == "7")
             {
-                fileOperations.ViewFileDetails(path);
+                Console.WriteLine("Choose an option:   ");
+                Console.WriteLine("1 - View a File Details");
+                Console.WriteLine("2 - View a Directory Details");
+                string option = Console.ReadLine();
+                if(option == "1")fileOperations.ViewFileDetails(path);
+                else if(option == "2")fileOperations.ViewFolderDetails(path);
+                else
+                {
+                    Console.WriteLine("Error: Invalid option");
+                }
             }
             else if (choice == "8")
             {
